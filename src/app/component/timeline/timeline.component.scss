@@ -1,0 +1,49 @@
+.wandh{
+    width: 35px;
+    height: 35px;
+}
+.borderfordopfile{
+border: 1px gray dashed;
+}
+.p-element{
+    width: 50%;
+}
+.cr{
+    cursor: pointer;
+}
+.mtt{
+margin-top: 76px;
+}
+
+@media (max-width: 575.98px) {
+
+    .size {
+      width: 100%;
+    }
+  }
+  
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+   
+    .size  {
+      width: 75%;
+    }
+  }
+  
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    
+    .size  {
+     width: 50%;
+    }
+  }
+  
+
+  @media (min-width: 992px)  {
+   
+    .size  {
+        width: 50%;
+       }
+  }
+  
+  

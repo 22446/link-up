@@ -1,0 +1,26 @@
+
+<section class="bordercomment rounded-2 my-3">
+    
+    <div class="container">
+        @for(item of commentData;track item._id){
+        <div class=" d-flex flex-column shadow  gap-2  p-2 my-3 ">
+         <div class="d-flex align-items-center gap-3">
+            <div>
+                <p class="fw-bolder p-0 m-0">{{item.commentCreator.name}}</p>
+                <span class="fw-light text-secondry">{{item.createdAt|date}}</span>
+            </div>
+        </div>
+        <div class="py-2 px-2">
+            <p class="fw-bold p-0 m-0">{{item.content}}</p>
+        </div>
+        </div>
+    }
+</div>
+</section>
+<div class="input-group p-1 my-2" [formGroup]="commentuser">
+    <input type="text" class="form-control" formControlName="content" (submit)="createComment()" placeholder="your comment..."  aria-describedby="button-addon2">
+    <button class="btn btn-outline-info" [disabled]="isSent" (click)="createComment()" type="button" id="button-addon2">Send@if(isSent){
+        <i class="fa-solid fa-spinner"></i>
+       }</button>
+   
+  </div>

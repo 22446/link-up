@@ -1,0 +1,29 @@
+<section class="d-flex align-items-center">
+    <div class="container-fluid">
+    <form [formGroup]='LoginGroup' class="p-4 shadow mx-auto"(ngSubmit)="SubmitLogin()">
+      <h1 class="text-center fw-bolder text-info my-2">Login</h1>
+        <div class="mb-3"> 
+            <input  formControlName='email'  type="email"class="form-control" placeholder="Enter Email...">
+            @if(LoginGroup.get('email')?.errors&&LoginGroup.get('email')?.touched){
+              @if(LoginGroup.get('email')?.getError('required')){
+                <div  class="form-text">email is required</div>
+              }@if(LoginGroup.get('email')?.getError('email')){
+                <div  class="form-text">enter valid email</div>
+              }
+            }
+          </div>
+          <div class="mb-3"> 
+            <input formControlName='password' type="password"  class="form-control" placeholder="Enter Password...">
+            @if(LoginGroup.get('password')?.errors&&LoginGroup.get('password')?.touched){
+              @if(LoginGroup.get('password')?.getError('required')){
+                <div  class="form-text">password is required</div>
+              }@if(LoginGroup.get('password')?.getError('pattern')){
+                <div  class="form-text">Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., #, ?, !, $, %, ^, &, , -).</div>
+              }
+            }
+          </div>
+        <button type="submit" [disabled]="LoginGroup.invalid" class="btn btn-primary my-2">Submit</button>
+        <p class="text-info my-2">didnt have an account <a routerLink="/register">sign up now</a></p>
+      </form>
+    </div>
+</section>

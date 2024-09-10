@@ -1,0 +1,59 @@
+<app-navbar-blank></app-navbar-blank>
+<div class="p-3 mtt  shadow size mx-auto rounded align-items-center">
+    <div class="mx-auto w-100">
+    <input (click)="showDialog()" placeholder="what in your mind?" class="form-control" label="Show" />
+    </div>
+    <p-dialog header="Add New Post"  [modal]="true" [(visible)]="visible" >
+        <section class="p-3 d-flex align-items-center shadow w-100 mx-auto flex-column gap-2 ">
+            <div class="w-100">
+                <textarea [(ngModel)]="content" placeholder="write your thought here.." class="form-control" ></textarea>
+            </div>
+        <div class="d-flex align-items-center justify-content-center my-2 w-100">
+            <label for="dropzone-file" class="borderfordopfile w-100 d-flex flex-column align-items-center justify-content-center h-100 my-2  rounded">
+                <div class="d-flex flex-column align-items-center justify-content-center p-4">
+                    <p class="mb-2 text-secondary"><span class="text-info">Click to upload</span> or drag and drop</p>
+                        <img src="./assets/images/upload.gif" alt="uploadfile">
+                    <p class="text-secondary fw-lighter">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                </div>
+                <input id="dropzone-file" (change)="ChangeImage($event)" type="file" class="d-none" />
+            </label>
+        </div> 
+        </section>
+        <div class="d-flex justify-content-start gap-3">
+            <button (click)="visible = false" class="btn btn-info" (click)="CreatePost()">post</button>
+            <button (click)="visible = false" class="btn btn-info">close</button>
+        </div>
+    </p-dialog>
+</div>
+
+
+
+<section class="w-100 my-3">
+    <div class="container">
+        @for(item of PostData;track item._id){
+        <div class="shadow size d-flex flex-column gap-3 border-4 p-3 my-3 mx-auto">
+         <div class="d-flex align-items-center gap-3">
+            <div>
+                <img class="wandh" [src]="item.user.photo" alt="">
+            </div>
+            <div>
+                <p class="fw-bold p-0 m-0">{{item.user.name}}</p>
+                <span class="fw-light text-secondry">{{item.createdAt|date}}</span>
+            </div>
+        </div>
+        <div class="py-2">
+            <p class="fw-bold p-0 m-0">{{item.body}}</p>
+        </div>
+        <img class="w-100" [src]="item.image" alt="">
+        <div class="d-flex justify-content-start p-2 cr align-self-start ">
+          <span class="text-info px-1" #clickToshow>comments</span>  <img src="../../../assets/images/icons8-comments-25.png" alt="">
+        </div>
+        @defer (on interaction(clickToshow)) {
+        <app-comment  [PostId]="item.id"></app-comment>
+        }@loading {
+            <p class="text-dark">Loading...</p>
+        }
+        </div>
+    }
+    </div>
+</section>
