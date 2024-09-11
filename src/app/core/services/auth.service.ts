@@ -18,11 +18,15 @@ export class AuthService {
   signInServfunc(data:object):Observable<any>{
     return this._HtppClient.post(`${environmenr.baseUrl}/users/signin`,data)
   }
+  
   logout(){
     if(localStorage.getItem('socialToken')!==null)
     {
       localStorage.removeItem('socialToken')
       this._Router.navigate(['/login'])
     }
+  }
+  UserInfo():Observable<any>{
+    return this._HtppClient.get(`${environmenr.baseUrl}/users/profile-data`)
   }
 }

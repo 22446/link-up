@@ -6,15 +6,14 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommentComponent } from "../comment/comment.component";
 import { NavbarBlankComponent } from "../navbar-blank/navbar-blank.component";
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-timeline',
   standalone: true,
-  imports: [InfiniteScrollModule, DatePipe, DialogModule, ButtonModule, InputTextModule, FormsModule, CommentComponent, NavbarBlankComponent],
+  imports: [DatePipe, DialogModule, ButtonModule, InputTextModule, FormsModule, CommentComponent, NavbarBlankComponent],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss'
 })
@@ -27,6 +26,7 @@ export class TimelineComponent implements OnInit {
       this.visible = true;
   }
   private _PostsService=  inject(PostsService)
+  private _AuthService=  inject(AuthService)
   PostData:Ipost[]=[]
   PostData2:RootObject={}as RootObject
   ngOnInit(): void {

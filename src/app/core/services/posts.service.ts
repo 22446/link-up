@@ -14,4 +14,13 @@ export class PostsService {
   postApost(data:object):Observable<any>{
     return this._HttpClient.post(`${environmenr.baseUrl}/posts`,data)
   }
+  
+  getUserPost():Observable<any>{
+    return this._HttpClient.get(`${environmenr.baseUrl}/users/664bcf3e33da217c4af21f00/posts`)
+
+  }
+  DeleteUserPost(id:string|null):Observable<any>{
+    return this._HttpClient.delete(`${environmenr.baseUrl}/posts/${id}`)
+
+  }
 }

@@ -10,8 +10,31 @@
                 <span class="fw-light text-secondry">{{item.createdAt|date}}</span>
             </div>
         </div>
-        <div class="py-2 px-2">
+        <div class="py-2 px-2 d-flex flex-column gap-1 ">
+            <div>
             <p class="fw-bold p-0 m-0">{{item.content}}</p>
+            </div>
+            @if(item.commentCreator._id===userdata.user){
+            <div class="d-flex flex-column gap-2">
+                <div class="d-flex  gap-2">
+                <a class="text-warning cr" #clickk label="Show" (click)="showCommentdata(item._id,item)">Update</a>
+            </div>
+            <div>
+                @defer(on interaction(clickk))
+                {
+                   <form class="input-group p-1 my-2" [formGroup]="commentuserUpdate"(submit)="updateComment(item._id)">
+                       <input type="text" class="form-control" formControlName="content"   aria-describedby="button-addon2">
+                       <button class="btn btn-outline-info" [disabled]="isSent" (click)="updateComment(item._id)" type="button" id="button-addon2">update@if(isSent2){
+                           <i class="fa-solid fa-spinner"></i>
+                          }</button>
+                   
+                     </form>
+                }
+            </div>
+            </div>
+
+        }
+            
         </div>
         </div>
     }

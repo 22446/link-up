@@ -1,0 +1,96 @@
+.wandh{
+    width: 35px;
+    height: 35px;
+}
+.borderfordopfile{
+border: 1px gray dashed;
+}
+.p-element{
+    width: 50%;
+}
+.cr{
+    cursor: pointer;
+}
+.mtt{
+margin-top: 76px;
+}
+
+@media (max-width: 575.98px) {
+
+    .size {
+      width: 100%;
+    }
+  }
+  
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+   
+    .size  {
+      width: 75%;
+    }
+  }
+  
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    
+    .size  {
+     width: 50%;
+    }
+  }
+  
+
+  @media (min-width: 992px)  {
+   
+    .size  {
+        width: 50%;
+       }
+  }
+  
+  .imgborder{
+    border: 1px;
+    border-radius: 50%;
+  }
+  .imgborder img{
+    border-radius: 50%;
+    width: 20%;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-button {
+    color: black;
+    border: none;
+    font-size: 26px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    display: none; 
+    position: absolute;
+    right:0;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown:hover .dropdown-button {
+    background-color: #0056b3;
+  }

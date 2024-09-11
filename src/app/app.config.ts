@@ -6,9 +6,12 @@ import {  provideClientHydration, withNoHttpTransferCache } from '@angular/platf
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { headerInterceptor } from './core/interceptors/header.interceptor';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { provideToastr } from 'ngx-toastr';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
+import { loaderInterceptor } from './core/interceptors/loader.interceptor';
+
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),InfiniteScrollDirective, provideClientHydration(withNoHttpTransferCache()),provideAnimations(),provideHttpClient(withFetch(),withInterceptors([headerInterceptor]))]
+  providers: [provideRouter(routes),provideToastr(), provideClientHydration(withNoHttpTransferCache()),provideAnimations(),provideHttpClient(withFetch(),withInterceptors([headerInterceptor,errorInterceptor,loaderInterceptor]))]
 };

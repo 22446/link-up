@@ -6,9 +6,9 @@
             <input  formControlName='email'  type="email"class="form-control" placeholder="Enter Email...">
             @if(LoginGroup.get('email')?.errors&&LoginGroup.get('email')?.touched){
               @if(LoginGroup.get('email')?.getError('required')){
-                <div  class="form-text">email is required</div>
+                <div  class="form-text text-danger">email is required</div>
               }@if(LoginGroup.get('email')?.getError('email')){
-                <div  class="form-text">enter valid email</div>
+                <div  class="form-text text-danger">enter valid email</div>
               }
             }
           </div>
@@ -16,9 +16,9 @@
             <input formControlName='password' type="password"  class="form-control" placeholder="Enter Password...">
             @if(LoginGroup.get('password')?.errors&&LoginGroup.get('password')?.touched){
               @if(LoginGroup.get('password')?.getError('required')){
-                <div  class="form-text">password is required</div>
+                <div  class="form-text text-danger">password is required</div>
               }@if(LoginGroup.get('password')?.getError('pattern')){
-                <div  class="form-text">Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., #, ?, !, $, %, ^, &, , -).</div>
+                <div  class="form-text text-danger">Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., #, ?, !, $, %, ^, &, , -).</div>
               }
             }
           </div>

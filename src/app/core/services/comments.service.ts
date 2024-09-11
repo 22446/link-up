@@ -15,4 +15,9 @@ export class CommentsService {
   {
     return this._HttpClient.post(`${environmenr.baseUrl}/comments`,data)
   }
+  updateComment(data:object,id:string|null):Observable<any>{
+    return this._HttpClient.put(`${environmenr.baseUrl}/comments/${id}`,data)
+
+  }
+
 }
