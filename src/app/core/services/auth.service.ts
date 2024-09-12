@@ -29,4 +29,7 @@ export class AuthService {
   UserInfo():Observable<any>{
     return this._HtppClient.get(`${environmenr.baseUrl}/users/profile-data`)
   }
+  UserChangePhoto(data:object):Observable<any>{
+    return this._HtppClient.put(`${environmenr.baseUrl}/users/upload-photo`,data)
+  }
 }

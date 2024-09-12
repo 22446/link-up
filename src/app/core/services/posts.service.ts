@@ -21,6 +21,8 @@ export class PostsService {
   }
   DeleteUserPost(id:string|null):Observable<any>{
     return this._HttpClient.delete(`${environmenr.baseUrl}/posts/${id}`)
-
+  }
+  UpdateUserPost(id:string|null,data:object):Observable<any>{
+    return this._HttpClient.put(`${environmenr.baseUrl}/posts/${id}`,data)
   }
 }

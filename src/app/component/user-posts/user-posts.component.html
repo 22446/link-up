@@ -1,11 +1,41 @@
 
-<app-navbar-blank></app-navbar-blank>
+<nav class="navbar px-4 py-1 navbar-light bg-light justify-content-between">
+    <a class="navbar-brand" routerLink="/timeline">LinkUp</a>
+    <form class="form-inline d-flex gap-1">
+      <button class="btn btn-outline-info my-2 my-sm-0" routerLink="/profile">{{UserInfo.name}}<img class="wandh" [src]="UserInfo.photo" alt=""></button>
+      <button class="btn btn-outline-danger my-2 my-sm-0" (click)="logoutsubmit()" type="submit">logout</button>
+    </form>
+  </nav>
 
-<section class="mtt shadow bg-dark ">
+<section class="shadow  bg-dark ">
 <div class="container-fluid">
     <div class="w-100 imgborder mx-auto">
         <div class=" d-flex align-items-center flex-column text-white">
+
             <img [src]="UserInfo.photo"  alt="">
+            <div class="p-4 mt-2 size mx-auto rounded align-items-center">
+                <div class="mx-auto w-50">
+                <button (click)="showDialog2()"  class="form-control btn btn-outline-info" label="Show">change Profile picture</button>
+                </div>
+                <p-dialog header="change profile picture"  [modal]="true" [(visible)]="visible2" >
+                    <section class="p-3 d-flex align-items-center shadow w-100 mx-auto flex-column gap-2 ">
+                    <div class="d-flex align-items-center justify-content-center my-2 w-100">
+                        <label for="dropzone-file" class="borderfordopfile w-100 d-flex flex-column align-items-center justify-content-center h-100 my-2  rounded">
+                            <div class="d-flex flex-column align-items-center justify-content-center p-4">
+                                <p class="mb-2 text-secondary"><span class="text-info">Click to upload</span> or drag and drop</p>
+                                    <img src="./assets/images/upload.gif" alt="uploadfile">
+                                <p class="text-secondary fw-lighter">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                            </div>
+                            <input id="dropzone-file" (change)="ChangePhoto($event)"type="file" class="d-none" />
+                        </label>
+                    </div> 
+                    </section>
+                    <div class="d-flex justify-content-start gap-3 mt-3">
+                        <button (click)="visible2 = false" class="btn btn-info" (click)="submitChagePhoto()">change</button>
+                        <button (click)="visible2 = false" class="btn btn-info">close</button>
+                    </div>
+                </p-dialog>
+            </div>
             <h2>{{UserInfo.name}}</h2>
             <p>{{UserInfo.dateOfBirth|date}}</p>
         </div>
@@ -32,7 +62,7 @@
             </label>
         </div> 
         </section>
-        <div class="d-flex justify-content-start gap-3">
+        <div class="d-flex justify-content-start gap-3 mt-3">
             <button (click)="visible = false" class="btn btn-info" (click)="CreatePost()">post</button>
             <button (click)="visible = false" class="btn btn-info">close</button>
         </div>
@@ -59,7 +89,33 @@
                 <button class="dropdown-button bg-white">...</button>
                 <div class="dropdown-menu">
                   <a class='text-danger cr'(click)="deletePostUser(item._id)">Delete Post</a>
-                  <a class='text-warning cr'>Update Post</a>
+                 
+                  <div class="mt-2 size  rounded align-items-center w-100">
+                    <div>
+                    <a (click)="showDialog3()" class='text-warning cr' label="Show">Update Post</a>
+                    </div>
+                    <p-dialog header="Update Post"  [modal]="true" [(visible)]="visible3" >
+                        <section class="p-3 d-flex align-items-center shadow w-100 mx-auto flex-column gap-2 ">
+                            <div class="w-100">
+                                <textarea [(ngModel)]="ContentUpdated" placeholder="write your thought here.." class="form-control" ></textarea>
+                            </div>
+                        <div class="d-flex align-items-center justify-content-center my-2 w-100">
+                            <label for="dropzone-file" class="borderfordopfile w-100 d-flex flex-column align-items-center justify-content-center h-100 my-2  rounded">
+                                <div class="d-flex flex-column align-items-center justify-content-center p-4">
+                                    <p class="mb-2 text-secondary"><span class="text-info">Click to upload</span> or drag and drop</p>
+                                        <img src="./assets/images/upload.gif" alt="uploadfile">
+                                    <p class="text-secondary fw-lighter">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                </div>
+                                <input id="dropzone-file" (change)="ChangePhotoForUpdate($event)"type="file" class="d-none" />
+                            </label>
+                        </div> 
+                        </section>
+                        <div class="d-flex justify-content-start gap-3  mt-3">
+                            <button (click)="visible3= false" class="btn btn-info" (click)="updatePost(item._id)">Update</button>
+                            <button (click)="visible3 = false" class="btn btn-info">close</button>
+                        </div>
+                    </p-dialog>
+                </div>
                 </div>
               </div>
     
