@@ -46,7 +46,7 @@
         </div>
         <img class="w-100" [src]="item.image" alt="">
         <div class="d-flex justify-content-start p-2 cr align-self-start ">
-          <span class="text-info px-1" #clickToshow>comments</span>  <img src="../../../assets/images/icons8-comments-25.png" alt="">
+          <span class="text-info px-1" #clickToshow>comments</span>  <img #clickToshow src="../../../assets/images/icons8-comments-25.png" alt="">
         </div>
         @defer (on interaction(clickToshow)) {
         <app-comment  [PostId]="item.id"></app-comment>
