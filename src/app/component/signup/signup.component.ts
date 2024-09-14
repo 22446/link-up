@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -29,6 +29,11 @@ export class SignupComponent {
     }else
        return  {mismatch : true};
     }
+  @ViewChild('change') myElement!:ElementRef
+
+changeType(){
+  this.myElement.nativeElement.setAttribute('type','date')
+}
 
     SubmitRegister(){
       if(this.RegisterGroup.valid){

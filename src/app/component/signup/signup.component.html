@@ -42,7 +42,12 @@
           </div>
 
           <div class="mb-3"> 
-            <input formControlName='dateOfBirth' onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control"  placeholder="Enter Birth Date...">
+            <input formControlName='dateOfBirth'#change class="form-control"  (click)="changeType()" placeholder="Enter Birth Date...">
+            @if(RegisterGroup.get('dateOfBirth')?.errors&&RegisterGroup.get('dateOfBirth')?.touched){
+              @if(RegisterGroup.get('dateOfBirth')?.getError('required')){
+                <div  class="form-text text-danger">Date of birth is required</div>
+              }
+            }
           </div> 
 
            <div class="d-flex gap-1 my-2">
