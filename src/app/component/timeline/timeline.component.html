@@ -15,11 +15,11 @@
                         <img src="./assets/images/upload.gif" alt="uploadfile">
                     <p class="text-secondary fw-lighter">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                 </div>
-                <input id="dropzone-file" (change)="ChangeImage($event)" type="file" class="d-none" />
+                <input id="dropzone-file" (change)="ChangeImage($event)" type="file" class="p-2" />
             </label>
         </div> 
         </section>
-        <div class="d-flex justify-content-start gap-3">
+        <div class="d-flex justify-content-start gap-3 pt-2">
             <button (click)="visible = false" class="btn btn-info" (click)="CreatePost()">post</button>
             <button (click)="visible = false" class="btn btn-info">close</button>
         </div>
