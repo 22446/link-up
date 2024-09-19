@@ -41,11 +41,9 @@ changeType(){
       {
 
         next:(res)=>{
-          console.log(res)
+          
           this._Router.navigate(['/login'])
 
-        },error:(err)=>{
-          console.log(err.error)
         }
 
       })
